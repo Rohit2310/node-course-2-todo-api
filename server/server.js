@@ -29,7 +29,19 @@ app.post('/todos', (req, res) => {
     });
 });
 
+// Get Request...
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos});
+    }, (e) => {
+        res.status(200).send(e);
+    });
+});
+
+
 // Server Listner...
 app.listen(3000, () => {
     console.log('Part 3000');
 });
+
+module.exports = {app};
